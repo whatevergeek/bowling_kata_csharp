@@ -23,19 +23,26 @@ namespace BowlingKata
             }
         }
 
+        int GetFrameScore(int index)
+        {
+            int bonus = 0;
+            if(frameList[index].Sum() > 9)
+            {
+                if (frameList[index].Count > 1)
+                    bonus += frameList[index + 1][0];
+            }
+            return frameList[index].Sum() + bonus;
+        }
 
-
-        public void Roll(int pinHitCount) => CurrentFrame.Add(pinHitCount);
+        public void Roll(int rollScore) => CurrentFrame.Add(rollScore);
 
         public int Score
         {
             get
             {
                 var tempScore = 0;
-                foreach(var frame in frameList)
-                {
-                    tempScore += frame.Sum();
-                }
+                for (int i = 0; i < frameList.Count; i++)
+                    tempScore += GetFrameScore(i);
 
                 return tempScore;
             }

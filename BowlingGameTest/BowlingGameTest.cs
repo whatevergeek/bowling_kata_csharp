@@ -23,6 +23,16 @@ namespace BowlingKata
             Assert.Equal(20, game.Score);
         }
 
+        [Fact]
+        public void TestOnlyRollsSpareInFirstFrame()
+        {
+            var game = new BowlingGame();
+            Repeat(() => game.Roll(5), 2);
+            Repeat(() => game.Roll(1), 18);
+
+            Assert.Equal(10+1+18, game.Score);
+        }
+
         private void Repeat(Action action, int count)
         {
             for (int i = 0; i < count; i++)
