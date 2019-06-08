@@ -50,7 +50,7 @@ namespace BowlingKata
             get
             {
                 var tempScore = 0;
-                for (int i = 0; i < frameList.Count; i++)
+                for (int i = 0; i < 10; i++)
                     tempScore += GetFrameScore(i);
 
                 return tempScore;

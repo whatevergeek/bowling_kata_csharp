@@ -43,6 +43,15 @@ namespace BowlingKata
             Assert.Equal(10 + 1 + 1 + 18, game.Score);
         }
 
+        [Fact]
+        public void TestBowlsAPerfectGame()
+        {
+            var game = new BowlingGame();
+            Repeat(() => game.Roll(10), 12);
+
+            Assert.Equal(300, game.Score);
+        }
+
         private void Repeat(Action action, int count)
         {
             for (int i = 0; i < count; i++)
