@@ -29,8 +29,17 @@ namespace BowlingKata
             if(frameList[index].Sum() > 9)
             {
                 if (frameList[index].Count > 1)
+                {
                     bonus += frameList[index + 1][0];
+                }
+                else
+                {
+                    bonus += frameList[index + 1][0];
+                    bonus += frameList[index + 1][0] > 9 ?
+                        frameList[index + 2][0] : frameList[index + 1][1];
+                }
             }
+
             return frameList[index].Sum() + bonus;
         }
 
